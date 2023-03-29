@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <button class="active"><i class="fa fa-fw fa-home"></i>Home</button>
+        <button onclick="cart()"><i class="fa fa-fw fa-search">Giỏ hàng</button>
+        <button onclick="dangnhap()"><i class="fa fa-fw fa-envelope">Login</i></button>
+        <button onclick="dangky()"><i class="fa fa-fw fa-user"></i>Signup</button>
+    </div>
+
+    <div class="container" id="sanPham">
+        <!--<div class="element">
+            <img class="imgelm" src="" alt="">
+            <div class="infSP">
+                <div>Tên sản phẩm</div>
+                <div>Giá</div>
+                <div>Số lượng</div>
+                <div>Mua</div>
+                <div>Thêm vào giỏ hàng</div>
+            </div>
+        </div> -->
+    </div>
+    <div id="snack-bar">
+
+    </div>
+
+    <script src="./js/main.js">
+
+    </script>
+    <script>
+        renderSP();
+    </script>
+
+</body>
+
+</html>
