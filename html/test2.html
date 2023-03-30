@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Dashboard | Uplon - Responsive Bootstrap 4 Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="Responsive bootstrap 4 admin template" name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets\images\favicon.ico" />
+
+    <!-- App css -->
+    <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+    <link href="assets\css\icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets\css\app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet" />
+</head>
+
+<body>
+    <input type="file" id="imgProduct" style="outline: none" />
+    <img id="image" src="" alt="" width="100px" height="100px" />
+    <script>
+        // Lấy thẻ hình ảnh từ HTML
+        const myImage = document.getElementById("image");
+
+        // Lắng nghe sự kiện onchange của input
+        const imageInput = document.getElementById("imgProduct");
+
+        imageInput.onchange = function (event) {
+            const file = event.target.files[0];
+
+            // Đọc tệp ảnh và chuyển đổi nó thành dữ liệu URL
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const dataUrl = event.target.result;
+
+                // Thiết lập nguồn ảnh của đối tượng ảnh với dữ liệu URL
+                myImage.src = dataUrl;
+
+                // Lưu dữ liệu URL vào local storage
+                localStorage.setItem("myImage", dataUrl);
+
+                // // Hiển thị ảnh
+                // imgElement.src = dataUrl;
+            };
+            reader.readAsDataURL(file);
+        };
+    </script>
+</body>
+
+</html>

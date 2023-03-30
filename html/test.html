@@ -1,24 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+    </style>
 </head>
+
 <body>
-    
+
+    <h2></h2>
+
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+    <div id="id01" class="modal">
+
+        <div class="modal-content animate" action="/action_page.php" method="post">
+            <h2>
+                đây là phần trong div
+            </h2>
+        </div>
+    </div>
+
     <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
 
-
-        //hàm sinh id theo ngày tháng năm sinh.
-        const uid = function(){
-            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                console.log("1111",modal)
+                modal.style.display = "none";
+            }
         }
-        console.log("11111",uid());
-
-        
-
     </script>
+
 </body>
+
 </html>

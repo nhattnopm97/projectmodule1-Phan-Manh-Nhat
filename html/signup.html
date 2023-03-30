@@ -13,24 +13,27 @@
     <div class="navbar">
         <button onclick="home()"><i class="fa fa-fw fa-home"></i>Home</button>
         <button onclick="cart()"><i class="fa fa-fw fa-search">Giỏ hàng</button>
-        <button onclick="dangnhap()"><i class="fa fa-fw fa-envelope">Login</i></button>
-        <button onclick="dangky()"  class="active"><i class="fa fa-fw fa-user"></i>Signup</button>
+        <button onclick="dangnhap()"><i class="fa fa-fw fa-envelope">Đăng nhập</i></button>
+        <button onclick="dangky()"  class="active"><i class="fa fa-fw fa-user"></i>Đăng ký</button>
     </div>
 
-    <form action="/action_page.php" style="border:1px solid #ccc">
+    <div style="border:1px solid #ccc">
         <div class="container">
-            <h1>Sign Up</h1>
-            <p>Please fill in this form to create an account.</p>
+            <h1>Đăng ký</h1>
+            <p>Vui lòng điền vào form để tạo tài khoản</p>
             <hr>
 
-            <label for="email"><b>Tài khoản</b></label>
-            <input type="text" placeholder="Thêm tài khoản" name="email" required>
+            <label for=""><b>Tài khoản (gmail)</b></label>
+            <input id="user" type="text" placeholder="Thêm tài khoản(email của bạn)" required>
 
-            <label for="psw"><b>Mật khẩu</b></label>
-            <input type="password" placeholder="Thêm mật khẩu" name="psw" required>
+            <label for=""><b>Mật khẩu</b></label>
+            <input id="psw" type="password" placeholder="Thêm mật khẩu" required>
 
-            <label for="psw-repeat"><b>Lặp lại mật khẩu</b></label>
-            <input type="password" placeholder="Lặp lại mật khẩu" name="psw-repeat" required>
+            <label for=""><b>Lặp lại mật khẩu</b></label>
+            <input id="pswr" type="password" placeholder="Lặp lại mật khẩu" required>
+
+            <label for=""><b>Số điện thoại</b></label>
+            <input id="tel" type="number" placeholder="0123456789" required>
 
             <label>
                 <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
@@ -43,7 +46,7 @@
                 <button onclick="signup()" class="signupbtn">Sign Up</button>
             </div>
         </div>
-    </form>
+    </div>
 
     <script src="../js/signup.js">
 

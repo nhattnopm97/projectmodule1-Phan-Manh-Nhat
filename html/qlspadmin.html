@@ -6,179 +6,80 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh sách sản phẩm</title>
+    <link rel="stylesheet" href="../css/qlspadmin.css">
 </head>
 <style>
-    #btnhiden {
-        display: none;
-    }
+    
 </style>
 
 <body>
-    <button onclick="dn()">Đăng nhập</button>
-    <button onclick="dk()">Đăng ký</button>
+    <div class="navbar">
+        <button onclick="home()"><i class="fa fa-fw fa-home"></i>Trang chủ</button>
+        <button onclick="cart()"><i class="fa fa-fw fa-search">Giỏ hàng</button>
+        <button id="dangnhap" onclick="dangnhap()"><i class="fa fa-fw fa-envelope">Đăng nhập</i></button>
+        <button id="nameUser"><i class="fa fa-fw fa-user"></i></button>
+        <button class="active" id="danhsachSP" onclick="dsSP()"><i class="fa fa-fw"></i>danh sách sản phẩm</button>
+        <button id="dangxuat" onclick="dangxuat()"><i class="fa fa-fw"></i>Đăng xuất</button>
+    </div>
     <h2>Nhập thông tin sản phẩm</h2>
-    <!-- /*tên, giá, mã, mô tả -->
+
     <label for="">Tên sản phẩm</label>
-    <input id="ten" type="text" placeholder="iphone 14 promax"><br>
+    <input id="ten" type="text" placeholder="Tên sản phẩmphẩm"><br>
+
     <label for="">Nhập giá</label>
-    <input id="gia" type="text" placeholder="35.000.000"><br>
+    <input id="gia" type="text" placeholder="Giá tiền"><br>
 
 
-    <label for="">Mô tả</label>
-    <input id="moTa" type="text" placeholder="trắng, đen, to, nhỏ,..."><br>
+    <label for="">Mô tả:</label><br>
+    <textarea id="moTa" rows="4" cols="100" placeholder="Mô tả"></textarea><br>
+
+    <input type="file" id="imgProduct" style="outline: none" />
+    <img id="image" src="" alt="" width="100px" height="100px" />
+    <br>
+    <br>
+
     <button id="btnSave" onclick="save()">Lưu thông tin</button>
     <button id="btnhiden" onclick="updateSP()">Cập nhật</button>
-    <table id="table" border="1px">
+    <br>
+    <br>
+    <br>
+
+    <table id="table" border="1px" style="border-collapse:collapse" >
 
     </table>
     <h2>Tìm kiếm theo tên sản phẩm</h2>
     <input id="timKiem" type="text" placeholder="iphonex">
     <button onclick="timKiem()">Tìm kiếm</button>
-    <table id="tbsearch"></table>
-    <script>
+    <table id="tbsearch" border="1px"></table>
+    <br>
 
-        //khi bấm vào nút lưu sản phẩm, lưu sản phẩm lên và sinh id cho sản phẩm
-        let dsSP = JSON.parse(localStorage.getItem("dsSP"));
-        function save() {
-            let ten = document.getElementById("ten").value;
-            let gia = document.getElementById("gia").value;
-            const uid = function () {
-                return Date.now().toString(36) + Math.random().toString(36).substr(2);
-            }
-            let moTa = document.getElementById("moTa").value;
-            let ma = uid();
-            let sanPham = {
-                ten: ten,
-                gia: gia,
-                ma: ma,
-                moTa: moTa,
-                sl:1
-            }
-            /*flag = JSON.parse(localStorage.getItem("flag"));
-            if (flag != null) {
-                sanPham = {
-                    ten: ten,
-                    gia: gia,
-                    ma: ma,
-                    moTa: moTa
-                }
-                localStorage.removeItem("flag");
-                dsSP.splice(flag, 1, sanPham);
-                localStorage.setItem("dsSP", JSON.stringify(dsSP));
-                themVaoBang();
-                return;
-            }*/
-            if (dsSP == null) {
-                dsSP = [];
-            }
-            dsSP.push(sanPham);
-            localStorage.setItem("dsSP", JSON.stringify(dsSP));
-            themVaoBang();
-        }
+    <h2>Quản lý danh sách người dùng.</h2>
+    <label for="">Email</label>
+    <input  id="taiKhoan" type="text">
+    <label for="">Mật khẩu</label>
+    <input id="matKhau" type="text">
+    <label for="">Số điện thoại</label>
+    <input  id="soDT" type="text">
+    <button onclick="addUser()">Thêm</button>
 
+    <button onclick="uoa()">
+        Ú ÒA
+    </button>
 
-        function themVaoBang() {
-            let kq =
-                `
-            <tr>
-                <td>STT</td>
-                <td>Tên sản phẩm</td>
-                <td>Giá</td>
-                <td>Mã sản phẩm</td>
-                <td>Mô tả</td>
-                <td>Edit</td>
-                <td>Xóa</td>
-            </tr>
-            `;
-            for (i = 0; i < dsSP.length; i++) {
-                kq +=
-                    `
-                <tr>
-                    <td>${i + 1}</td>
-                    <td>${dsSP[i].ten}</td>
-                    <td>${dsSP[i].gia}</td>
-                    <td>${dsSP[i].ma}</td>
-                    <td>${dsSP[i].moTa}</td>
-                    <td><button onclick="ed(${i})">Edit</button></td>
-                    <td><button onclick="del(${i})">Xóa</button></td>
-                </tr>
-                `;
-            }
-            document.getElementById("table").innerHTML = kq;
-            document.getElementById("ten").value = "";
-            document.getElementById("gia").value = "";
-            document.getElementById("moTa").value = "";
-        }
-        themVaoBang();
-        function del(id) {
-            dsSP.splice(id, 1);
-            localStorage.setItem("dsSP", JSON.stringify(dsSP));
-            themVaoBang();
-        }
+    <table id="listUserRender" border="1px">
+        <!-- <tr>
+            <td>stt</td>
+            <td>tên người dùng</td>
+            <td>sdt:</td>
+            <td><button>ban</button></td>
+            <td><button>edit</button></td>
+            <td><button>xóa</button></td>
+        </tr> -->
+    </table>
+    <script src="../js/qlspadmin.js">
 
-        //khi bấm vào nút edit thì ẩn nút lưu sản phẩm, hiện nút update sản phẩm cũ.
-        function ed(id) {
-            document.getElementById("ten").value = dsSP[id].ten;
-            document.getElementById("gia").value = dsSP[id].gia;
-            document.getElementById("moTa").value = dsSP[id].moTa;
-            const idSPNed = dsSP[id].ma;
-            let idAndMa = [id, idSPNed];
-            localStorage.setItem("flag", JSON.stringify(idAndMa));
-            let hidenbutton = document.getElementById("btnSave");
-            hidenbutton.style.display = "none";
-            let showHidenBtn = document.getElementById("btnhiden");
-            showHidenBtn.style.display = "block";
-        }
-
-
-        //Tìm kiếm theo tên sản phẩm
-        function timKiem() {
-            let ndTK = document.getElementById("timKiem").value;
-            let kqTK = "";
-            for (j = 0; j < dsSP.length; j++) {
-                if (dsSP[j].ten.toLowerCase().includes(ndTK.toLowerCase())) {
-                    kqTK +=
-                        `
-                    <tr>
-                        <td>${j + 1}</td>
-                        <td>${dsSP[j].ten}</td>
-                        <td>${dsSP[j].gia}</td>
-                        <td>${dsSP[j].ma}</td>
-                        <td>${dsSP[j].moTa}</td>
-                    </tr>
-                    `
-                }
-                document.getElementById("tbsearch").innerHTML = kqTK;
-            }
-        }
-
-        //xóa dữ liệu cũ và cập nhật dữ liệu mới với mã là mã cũ vào danh sách sản phẩm lưu trên local, chuyển nút cập nhật thành nút lưu
-        function updateSP() {
-            flag = JSON.parse(localStorage.getItem("flag"));
-            if (flag != null) {
-                let gia = document.getElementById("gia").value;
-                let ten = document.getElementById("ten").value;
-                let ma = flag[1];
-                let moTa = document.getElementById("moTa").value;
-
-                sanPham = {
-                    ten: ten,
-                    gia: gia,
-                    ma: ma,
-                    moTa: moTa,
-                    sl:1,
-                }
-                localStorage.removeItem("flag");
-                dsSP.splice(flag[0], 1, sanPham);
-                localStorage.setItem("dsSP", JSON.stringify(dsSP));
-                themVaoBang();
-                let hidenbutton = document.getElementById("btnSave");
-                hidenbutton.style.display = "block";
-                let showHidenBtn = document.getElementById("btnhiden");
-                showHidenBtn.style.display = "none";
-            }
-        }
     </script>
+
 </body>
 
 </html>

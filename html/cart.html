@@ -6,35 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ hàng</title>
-    <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/cart.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 
 <body>
+
     <div class="navbar">
-        <button onclick="home()"><i class="fa fa-fw fa-home"></i>Home</button>
-        <button onclick="cart()" class="active"><i class="fa fa-fw fa-search">Giỏ hàng</button>
-        <button onclick="dangnhap()"><i class="fa fa-fw fa-envelope">Login</i></button>
-        <button onclick="dangky()"><i class="fa fa-fw fa-user"></i>Signup</button>
+        <button onclick="home()"><i class="fa fa-fw fa-home"></i>Trang chủ</button>
+        <button class="active" onclick="cart()"><i class="fa fa-fw fa-search">Giỏ hàng<span
+                    id="qttCart"></span></button>
+        <button id="dangnhap" onclick="dangnhap()"><i class="fa fa-fw fa-envelope">Đăng nhập</i></button>
+        <button id="dangky" onclick="dangky()"><i class="fa fa-fw fa-user"></i>Đăng ký</button>
+        <button id="nameUser"><i class="fa fa-fw fa-user"></i></button>
+        <button id="dsSP" onclick="dsSP()"><i class="fa fa-fw"></i>Ngài có muốn xem ds sản phẩm</button>
+        <button id="dangxuat" onclick="dangxuat()"><i class="fa fa-fw"></i>Đăng xuất</button>
     </div>
-    <h2>Giỏ hàng của ${name}</h2>
+
+    <h2 id="userName">Giỏ hàng của ${name}</h2>
     <div id="cart">
-        <!-- <div class="element">
-            <img class="imgelm" src="" alt="">
-            <div class="infSP">
-                <div>Tên sản phẩm</div>
-                <div>Giá</div>
-                <div>Số lượng</div>
-                <div>Mua</div>
-                <div>Thêm vào giỏ hàng</div>
-            </div>
-        </div> -->
+    </div>
+
+    <div class="row">
+        <div id="totalMoney" class="col-md-8 tongTien">
+        </div>
+        <div class="col-md-1"><button class="btnTaoDon btn btn-success" onclick="taodon()">Tạo đơn ngay</button></div>
     </div>
     <script src="../js/cart.js">
-        
+
     </script>
     <script>
         renderCart();
+        kiemTraDangNhap()
     </script>
 </body>
 

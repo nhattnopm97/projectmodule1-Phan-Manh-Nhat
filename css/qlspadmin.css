@@ -1,26 +1,7 @@
-#cart {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.element {
-    border: 1px solid black;
-    margin: 20px;
-}
-
-.imgelm {
-    border: 1px solid black;
-    width: 250px;
-    height: 300px;
-}
-
-.infSP {
-    text-align: center;
-}
-
-.cAndt {
-    display: flex;
-    justify-content: space-evenly;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 #btnhiden {
@@ -49,9 +30,3 @@
 .active {
     background-color: #04AA6D;
 }
-
-.tongTien{
-    text-align: right;
-    font-size:xx-large;
-}
-

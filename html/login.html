@@ -13,34 +13,34 @@
     <div class="navbar">
         <button onclick="home()"><i class="fa fa-fw fa-home"></i>Home</button>
         <button onclick="cart()"><i class="fa fa-fw fa-search">Giỏ hàng</button>
-        <button onclick="dangnhap()" class="active"><i class="fa fa-fw fa-envelope">Login</i></button>
-        <button onclick="dangky()"><i class="fa fa-fw fa-user"></i>Signup</button>
+        <button onclick="dangnhap()" class="active"><i class="fa fa-fw fa-envelope">Đăng nhập</i></button>
+        <button onclick="dangky()"><i class="fa fa-fw fa-user"></i>đăng ký</button>
     </div>
-    <h2>Login Form</h2>
+    <h2>Đăng Nhập</h2>
     
-    <form action="/action_page.php" method="post">
+    <div>
         <div class="imgcontainer">
             <img src="./image/facebook-user-icon-27.jpg" alt="Avatar" class="avatar">
         </div>
 
         <div class="container">
             <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+            <input id="user" type="text" placeholder="Enter Username" name="uname" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
 
             <button class="loginbutton" onclick="Login()">Login</button>
-            <label>
+            <!-- <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
-            </label>
+            </label> -->
         </div>
 
         <div class="container" style="background-color:#f1f1f1">
-            <button type="button" class="cancelbtn">Cancel</button>
-            <span class="psw">Forgot <a href="#">password?</a></span>
+            <button type="button" class="cancelbtn">HỦY</button>
+            <span class="psw">Quên <a href="#">mật khẩu?</a></span>
         </div>
-    </form>
+    </div>
 
     <script src="../js/login.js">
         
