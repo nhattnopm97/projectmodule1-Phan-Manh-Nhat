@@ -1,52 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <title>Dashboard | Uplon - Responsive Bootstrap 4 Admin Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta content="Responsive bootstrap 4 admin template" name="description" />
-    <meta content="Coderthemes" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="assets\images\favicon.ico" />
-
-    <!-- App css -->
-    <link href="assets\css\bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
-    <link href="assets\css\icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets\css\app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
-
 <body>
-    <input type="file" id="imgProduct" style="outline: none" />
-    <img id="image" src="" alt="" width="100px" height="100px" />
-    <script>
-        // Lấy thẻ hình ảnh từ HTML
-        const myImage = document.getElementById("image");
-
-        // Lắng nghe sự kiện onchange của input
-        const imageInput = document.getElementById("imgProduct");
-
-        imageInput.onchange = function (event) {
-            const file = event.target.files[0];
-
-            // Đọc tệp ảnh và chuyển đổi nó thành dữ liệu URL
-            const reader = new FileReader();
-            reader.onload = function (event) {
-                const dataUrl = event.target.result;
-
-                // Thiết lập nguồn ảnh của đối tượng ảnh với dữ liệu URL
-                myImage.src = dataUrl;
-
-                // Lưu dữ liệu URL vào local storage
-                localStorage.setItem("myImage", dataUrl);
-
-                // // Hiển thị ảnh
-                // imgElement.src = dataUrl;
-            };
-            reader.readAsDataURL(file);
-        };
-    </script>
+    <div class="container">
+        <h2>Hoverable Dark Table</h2>
+        <p>The .table-hover class adds a hover effect (grey background color) on table rows:</p>            
+        <table class="table table-dark table-hover">
+          <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John</td>
+              <td>Doe</td>
+              <td>john@example.com</td>
+            </tr>
+            <tr>
+              <td>Mary</td>
+              <td>Moe</td>
+              <td>mary@example.com</td>
+            </tr>
+            <tr>
+              <td>July</td>
+              <td>Dooley</td>
+              <td>july@example.com</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <script>
+        /*a=[{đơn1},{đơn2},{đơn3}];
+        đơn1={
+            tênngườidung:a,
+            msp://làm thế nào để lưu nhiều mã sản phẩm nhỉ
+            sdt: "012933543",
+            diachi:akjsdhfkadsl,
+            madonhang:dfkajsdhf
+        }*/
+        // lưu thêm mã đơn hàng, địa chỉ, sdt, vào nữa thì sao nhỉ. Lúc rút đơn ra thì rút mã đơn và tên người dùng là có hết. Nhưng khi có 2 đơn trờ lên thì không khả thi vì 
+        //dữ liệu mã đơn hàng sẽ bị ghi đè lên đơn cũ, khi tìm đơn cũ thì không ra => lỗi không khả thi
+      </script>
 </body>
-
 </html>

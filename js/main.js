@@ -30,13 +30,25 @@ function dsSP() {
     window.location.href = "./html/qlspadmin.html";
 }
 
+function popUpCartDangNhap() {
+    console.log("aa");
+    document.getElementById("snack-bar").innerHTML = `Mời bạn đăng nhập để có trải nghiệm mua sắm tốt hơn`;
+    var x = document.getElementById("snack-bar");
+    x.className = "show";
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
+
 function countPr() {
     let listSPCart = JSON.parse(localStorage.getItem("listSPCart"));
     let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
     let coPrInUser = 0;
-    for (j = 0; j < listSPCart.length; j++) {
-        if (listSPCart[j].user === flagLogin.user) {
-            ++coPrInUser;
+    if (flagLogin == null) {
+        popUpCartDangNhap();
+    } else {
+        for (j = 0; j < listSPCart.length; j++) {
+            if (listSPCart[j].user === flagLogin.user) {
+                ++coPrInUser;
+            }
         }
     }
     document.getElementById("qttCart").innerHTML = `(${coPrInUser})`;
@@ -52,10 +64,9 @@ function renderSP() {
             <div class="element">
                 <img class="imgelm" onclick=bamvaoanh("${dsSP[i].ma}") style="width:auto;" src="${dsSP[i].image}" alt="">
                 <div class="infSP">
-                    <div>${dsSP[i].ten}</div>
-                    <div>${dsSP[i].gia}$</div>
-                    <div><button class="btn btn-success" onclick=mua(${dsSP[i].ma, dsSP[i].user})>Mua</button></div>
-                    <div><button class="btn btn-primary" onclick=addCart("${dsSP[i].ma}")>Thêm vào giỏ hàng</button></div>
+                    <div class="bg-info text-white">${dsSP[i].ten}</div>
+                    <div class="bg-primary text-white">${dsSP[i].gia}$</div>
+                    <div><button class="btn btn-success" onclick=addCart("${dsSP[i].ma}")>Thêm vào giỏ hàng</button></div>
                 </div>
             </div>
         `;
@@ -69,6 +80,10 @@ function addCart(idSP) {
     let dsSP = JSON.parse(localStorage.getItem("dsSP"));
     let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
     let listSPCart = JSON.parse(localStorage.getItem("listSPCart"));
+    if(flagLogin==null){
+        popUpCartDangNhap();
+        return;
+    }
     if (listSPCart == null) {
         console.log(listSPCart);
         //trường hợp giỏ hàng chưa có gì.
@@ -164,9 +179,11 @@ function kiemTraDangNhap() {
 }
 
 //đăng xuất xóa cờ đăng nhập
+kiemTraDangNhap();
 function dangxuat() {
     localStorage.removeItem("flagLogin");
     kiemTraDangNhap();
+    countPr();phẩm
 }
 
 //khi ấn vào ảnh sản phẩm
@@ -179,14 +196,10 @@ function bamvaoanh(maSP) {
                 `
             <div class="elementIfo">
                 <img class="imgelm" onclick="bamvaoanh(${dsSP[i].ma, dsSP[i].user})" style="width:auto;" src="${dsSP[i].image}" alt="">
-                <div class="infSP">
-                    <div>${dsSP[i].ten}</div>
-                    <div>${dsSP[i].gia}$</div>
-                    <div>${dsSP[i].ma}$</div>
-                    <div>${dsSP[i].moTa}$</div>
-                    <div><button class="btn btn-success" onclick=mua(${dsSP[i].ma, dsSP[i].user})>Mua</button></div>
-                    <div><button class="btn btn-primary" onclick=addCart("${dsSP[i].ma}")>Thêm vào giỏ hàng</button></div>
-                </div>
+                <div class="bg-info text-white">${dsSP[i].ten}</div>
+                <div class="bg-primary text-white">${dsSP[i].gia}$</div>
+                <div class="bg-info text-white">${dsSP[i].moTa}</div>
+                <div><button class="btn btn-success" onclick=addCart("${dsSP[i].ma}")>Thêm vào giỏ hàng</button></div>
             </div>
             `;
         }

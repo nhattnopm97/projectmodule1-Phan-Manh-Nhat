@@ -74,8 +74,8 @@ function save() {
     const uid = function () {
         return Date.now().toString(36) + Math.random().toString(36).substr(2);
     }
-    let moTa = document.getElementById("moTa").value;
     let ma = uid();
+    let moTa = document.getElementById("moTa").value;
     let sanPham = {
         ten: ten,
         gia: gia,

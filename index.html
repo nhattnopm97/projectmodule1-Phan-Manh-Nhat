@@ -13,20 +13,20 @@
 
 <body>
 
-
+    <section class="rain"></section>
 
     <div class="nav-bar">
         <button class="active"><i class="fa fa-fw fa-home"></i>Trang chủ</button>
         <button onclick="cart()"><i class="fa fa-fw fa-search">Giỏ hàng <span id="qttCart"></span></button>
         <button id="dangnhap" onclick="dangnhap()"><i class="fa fa-fw fa-envelope">Đăng nhập</i></button>
         <button id="dangky" onclick="dangky()"><i class="fa fa-fw fa-user"></i>Đăng ký</button>
-        <button id="nameUser"><i class="fa fa-fw fa-user"></i></button>
+        <button id="nameUser" class="ngaiTieuTruong"><i class="fa fa-fw"></i></button>
         <button id="dsSP" onclick="dsSP()"><i class="fa fa-fw"></i>Ngài có muốn xem ds sản phẩm</button>
         <button id="dangxuat" onclick="dangxuat()"><i class="fa fa-fw"></i>Đăng xuất</button>
     </div>
 
     <div class="carosel">
-    <!-- Carousel -->
+        <!-- Carousel -->
         <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
             <!-- Indicators/dots -->
@@ -77,7 +77,19 @@
 
     <!-- ú òa nào ae -->
     <div id="id01" class="modal animate">
-
+        <!-- 
+           <div class="elementIfo">
+                <img class="imgelm" onclick="bamvaoanh(${dsSP[i].ma, dsSP[i].user})" style="width:auto;" src="${dsSP[i].image}" alt="">
+                <div class="infSP">
+                    <div>${dsSP[i].ten}</div>
+                    <div>${dsSP[i].gia}$</div>
+                    <div>${dsSP[i].ma}</div>
+                    <div class="doanMoTa">${dsSP[i].moTa}</div>
+                    <div><button class="btn btn-success" onclick=mua(${dsSP[i].ma, dsSP[i].user})>Mua</button></div>
+                    <div><button class="btn btn-primary" onclick=addCart("${dsSP[i].ma}")>Thêm vào giỏ hàng</button></div>
+                </div>
+            </div>
+        -->
 
     </div>
 
@@ -90,6 +102,7 @@
     <script>
         renderSP();
         kiemTraDangNhap();
+
     </script>
 
 </body>

@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 body {
     width: 100%;
     font-family: Arial, Helvetica, sans-serif;
@@ -15,6 +16,8 @@ body {
 }
 
 .nav-bar {
+    display: flex;
+    justify-content: center;
     z-index: 99;
     width: 100%;
     background-color: #555;
@@ -33,6 +36,13 @@ body {
 
 .nav-bar button:hover {
     background-color: #000;
+    color:#ffff;
+}
+
+.ngaiTieuTruong:hover{
+    background-color: #efefef !important ;
+    color: rgb(113, 105, 105) !important;
+
 }
 
 .active {
@@ -57,23 +67,37 @@ body {
 }
 
 .element {
-    border: 1px solid black;
-    margin: 50px;
-
+    margin: 30px;
+}
+.element:hover,
+.elementIfo:hover{
+    transform: scale(1.2);
+    transition-duration:0.3s;
 }
 
 .imgelm {
-    border: 1px solid black;
     width: 250px;
     height: 300px;
     display: flex;
     justify-content: center;
+    border-radius: 20px;
+
 }
 
 .infSP {
+    align-items: center;
     text-align: center;
 }
 
+.elementIfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text-white{
+    text-align: center;
+}
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #snack-bar {
@@ -224,11 +248,13 @@ body {
     }
 }
 
+modal
+
 /* The Modal (background) */
 .modal {
     display: none;
     /* Hidden by default */
-    position: fixed;
+    /* position: fixed; */
     /* Stay in place */
     z-index: 1;
     /* Sit on top */
@@ -238,24 +264,32 @@ body {
     /* Full width */
     height: 100%;
     /* Full height */
-    overflow: auto;
+    /* overflow: auto; */
     /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
+    /* background-color: rgb(0, 0, 0); */
     /* Fallback color */
     background-color: rgba(0, 0, 0, 0.4);
     /* Black w/ opacity */
-    padding-top: 60px;
+    margin-top: 60px !important;
 }
 
 
-.elementIfo  {
+.elementIfo {
+    width: 60%;
     background-color: #676565;
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
     font-size: larger;
+    margin: 5rem auto;
+
 }
 
-.elementIfo img{
+.elementIfo img {
     width: 20%;
     margin: 0 auto;
+}
+
+.elementIfo .infSP .doanMoTa {
+    background-color: black;
+    
 }
