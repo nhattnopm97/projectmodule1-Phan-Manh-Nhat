@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#btnhiden {
+    display: none;
+}
+
+.navbar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+    position: sticky;
+    top: 0;
+}
+
+.navbar button {
+    float: left;
+    padding: 12px;
+    color: rgb(113, 105, 105);
+    font-size: 17px;
+}
+
+.navbar button:hover {
+    background-color: #000;
+}
+
+.active {
+    background-color: #04AA6D;
+}
+
+.ngaiTieuTruong:hover{
+    background-color: #efefef !important ;
+    color: rgb(113, 105, 105) !important;
+}

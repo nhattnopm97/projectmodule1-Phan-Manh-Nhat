@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sản phẩm</title>
+    <link rel="stylesheet" href="../css/qlspadmin.css">
+</head>
+<style>
+    
+</style>
+
+<body>
+    <div class="navbar">
+        <button onclick="home()"><i class="fa fa-fw fa-home"></i>Trang chủ</button>
+        <button onclick="cart()"><i class="fa fa-fw fa-search">Giỏ hàng</button>
+        <button id="dangnhap" onclick="dangnhap()"><i class="fa fa-fw fa-envelope">Đăng nhập</i></button>
+        <button id="nameUser" class="ngaiTieuTruong"><i class="fa fa-fw fa-user"></i></button>
+        <button class="active" id="danhsachSP" onclick="dsSP()"><i class="fa fa-fw"></i>danh sách sản phẩm</button>
+        <button id="dangxuat" onclick="dangxuat()"><i class="fa fa-fw"></i>Đăng xuất</button>
+    </div>
+    <h2>Nhập thông tin sản phẩm</h2>
+
+    <label for="">Tên sản phẩm</label>
+    <input id="ten" type="text" placeholder="Tên sản phẩmphẩm"><br>
+
+    <label for="">Nhập giá</label>
+    <input id="gia" type="text" placeholder="Giá tiền"><br>
+
+
+    <label for="">Mô tả:</label><br>
+    <textarea id="moTa" rows="4" cols="100" placeholder="Mô tả"></textarea><br>
+
+    <input type="file" id="imgProduct" style="outline: none" />
+    <img id="image" src="" alt="" width="100px" height="100px" />
+    <br>
+    <br>
+
+    <button id="btnSave" onclick="save()">Lưu thông tin</button>
+    <button id="btnhiden" onclick="updateSP()">Cập nhật</button>
+    <br>
+    <br>
+    <br>
+
+    <table id="table" border="1px" style="border-collapse:collapse" >
+
+    </table>
+    <h2>Tìm kiếm theo tên sản phẩm</h2>
+    <input id="timKiem" type="text" placeholder="iphonex">
+    <button onclick="timKiem()">Tìm kiếm</button>
+    <table id="tbsearch" border="1px"></table>
+    <br>
+
+    <h2>Quản lý danh sách người dùng.</h2>
+    <label for="">Email</label>
+    <input  id="taiKhoan" type="text">
+    <label for="">Mật khẩu</label>
+    <input id="matKhau" type="text">
+    <label for="">Số điện thoại</label>
+    <input  id="soDT" type="text">
+    <button onclick="addUser()">Thêm</button>
+
+    <button onclick="uoa()">
+        Ú ÒA
+    </button>
+
+    <table id="listUserRender" border="1px">
+        <!-- <tr>
+            <td>stt</td>
+            <td>tên người dùng</td>
+            <td>sdt:</td>
+            <td><button>ban</button></td>
+            <td><button>edit</button></td>
+            <td><button>xóa</button></td>
+        </tr> -->
+    </table>
+    <script src="../js/qlspadmin.js">
+
+    </script>
+
+</body>
+
+</html>

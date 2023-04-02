@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var numbers = [100, 200, 300, 400, 500];
+
+        var selected_number = numbers.filter(function (value) {
+            console.log(value);
+            if (value == 300) {
+                return false;
+            }
+            return true;
+        });
+
+        console.log(selected_number); // 100, 200, 400, 500
+
+        let listSPCart = JSON.parse(localStorage.getItem("listDonHang"));
+        let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
+        console.log(listSPCart);
+        console.log(flagLogin.user);
+
+        var listDonHangnew = listSPCart.filter(function (value) {
+            console.log(value);
+            if (value.user == flagLogin.user) {
+                return false;
+            }
+            return true;
+        });
+
+        console.log(listDonHangnew); // 100, 200, 400, 500
+    </script>
+</body>
+
+</html>

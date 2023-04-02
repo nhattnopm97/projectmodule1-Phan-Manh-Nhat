@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ĐĂNG KÝ</title>
+    <link rel="stylesheet" href="../css/signup.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <button onclick="home()"><i class="fa fa-fw fa-home"></i>Home</button>
+        <button onclick="cart()"><i class="fa fa-fw fa-search">Giỏ hàng</button>
+        <button onclick="dangnhap()"><i class="fa fa-fw fa-envelope">Đăng nhập</i></button>
+        <button onclick="dangky()"  class="active"><i class="fa fa-fw fa-user"></i>Đăng ký</button>
+    </div>
+
+    <div style="border:1px solid #ccc">
+        <div class="container">
+            <h1>Đăng ký</h1>
+            <p>Vui lòng điền vào form để tạo tài khoản</p>
+            <hr>
+
+            <label for=""><b>Tài khoản (gmail)</b></label>
+            <input id="user" type="text" placeholder="Thêm tài khoản(email của bạn)" required>
+
+            <label for=""><b>Mật khẩu</b></label>
+            <input id="psw" type="password" placeholder="Thêm mật khẩu" required>
+
+            <label for=""><b>Lặp lại mật khẩu</b></label>
+            <input id="pswr" type="password" placeholder="Lặp lại mật khẩu" required>
+
+            <label for=""><b>Số điện thoại</b></label>
+            <input id="tel" type="number" placeholder="0123456789" required>
+
+            <label>
+                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+            </label>
+
+            <p>ĐĂNG KÝ đồng nghĩa đồng ý với <a href="#" style="color:dodgerblue">Điều Khoản và Quyền Riêng Tư</a>.</p>
+
+            <div class="clearfix">
+                <button  type="button" class="cancelbtn">Cancel</button>
+                <button onclick="signup()" class="signupbtn">Sign Up</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/signup.js">
+
+    </script>
+</body>
+
+</html>

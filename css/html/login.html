@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <button onclick="home()"><i class="fa fa-fw fa-home"></i>Home</button>
+        <button onclick="cart()"><i class="fa fa-fw fa-search">Giỏ hàng</button>
+        <button onclick="dangnhap()" class="active"><i class="fa fa-fw fa-envelope">Đăng nhập</i></button>
+        <button onclick="dangky()"><i class="fa fa-fw fa-user"></i>đăng ký</button>
+    </div>
+    <h2>Đăng Nhập</h2>
+    
+    <div>
+        <div class="imgcontainer">
+            <img src="./image/facebook-user-icon-27.jpg" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input id="user" type="text" placeholder="Enter Username" name="uname" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
+
+            <button class="loginbutton" onclick="Login()">Login</button>
+            <!-- <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label> -->
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" class="cancelbtn">HỦY</button>
+            <span class="psw">Chưa có tài khoản? <a onclick="dangky()" href="#">Đăng ký.</a></span>
+        </div>
+    </div>
+
+    <script src="../js/login.js">
+        
+    </script>
+</body>
+
+</html>
