@@ -38,11 +38,7 @@ function dangxuat() {
     window.location.href = "../index.html"
 }
 
-
-
-//khi bấm vào nút lưu sản phẩm, lưu sản phẩm lên và sinh id cho sản phẩm
-let dsSP = JSON.parse(localStorage.getItem("dsSP"));
-function save() {
+function addimage(){
     // Lấy thẻ hình ảnh từ HTML
     const myImage = document.getElementById("image");
 
@@ -68,6 +64,13 @@ function save() {
         };
         reader.readAsDataURL(file);
     };
+}
+addimage();
+
+//khi bấm vào nút lưu sản phẩm, lưu sản phẩm lên và sinh id cho sản phẩm
+let dsSP = JSON.parse(localStorage.getItem("dsSP"));
+function save() {
+    addimage();
     let ten = document.getElementById("ten").value;
     let gia = document.getElementById("gia").value;
     let hinhAnh = localStorage.getItem("myImage");
@@ -235,8 +238,8 @@ function uoa() {
         <td>tên người dùng</td>
         <td>sdt:</td>
         <td><button>ban</button></td>
-        <td><button>edit</button></td>
-        <td><button>xóa</button></td>
+        <td>Edit</td>
+        <td>Xóa</td>
     </tr>`;
     for (i = 0; i < listUser.length; i++) {
         kQ +=

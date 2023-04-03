@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách đơn hàng</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh sách đơn hàng</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/order.css">
 </head>
+
 <body>
-    <div class="container">
-        <h2>Đơn hàng</h2>
-        <p>Tại sao mình lại không dùng bootstrap từ đầu nhỉ?</p>            
-        <table class="table table-dark table-hover">
-          <thead>
-            <tr>
-              <th>Đơn</th>
-              <th>Tên</th>
-              <th>Mã đơn</th>
-              <th>Sản phẩm và số lượng</th>
-              <th>Trạng thái</th>
-            </tr>
-          </thead>
-          <tbody id="renderDonHang">
-            <!-- <tr>
+
+  <div class="nav-bar">
+    <button onclick="home()"><i class="fa fa-fw fa-home"></i>Trang chủ</button>
+    <button class="active" onclick="cart()"><i class="fa fa-fw fa-search">Giỏ hàng<span id="qttCart"></span></button>
+    <button id="dangnhap" onclick="dangnhap()"><i class="fa fa-fw fa-envelope">Đăng nhập</i></button>
+    <button id="dangky" onclick="dangky()"><i class="fa fa-fw fa-user"></i>Đăng ký</button>
+    <button id="nameUser"><i class="fa fa-fw fa-user"></i></button>
+    <button id="dsSP" onclick="dsSP()"><i class="fa fa-fw fa-user"></i>Ngài có muốn xem ds sản phẩm</button>
+    <button id="dangXuat" onclick="dangxuat()"><i class="fa fa-fw"></i>Đăng xuất</button>
+  </div>
+
+  <div class="container">
+    <h2>Đơn hàng</h2>
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th>Đơn</th>
+          <th>Tên</th>
+          <th>Địa chỉ giao hàng</th>
+          <th>Mã đơn</th>
+          <th>Sản phẩm và số lượng</th>
+          <th>Tổng</th>
+          <th>Trạng thái</th>
+          <th>Xóa</th>
+        </tr>
+      </thead>
+      <tbody id="renderDonHang">
+        <!-- <tr>
               <td>1</td>
               <td>Phan Mạnh Nhật</td>
               <td>ádfdsafsadf</td>
@@ -38,9 +54,12 @@
               <td>Dooley</td>
               <td>july@example.com</td>
             </tr> -->
-          </tbody>
-        </table>
-      </div>
-      <script src="../js/order.js"></script>
+      </tbody>
+    </table>
+  </div>
+  <div id="snack-bar">
+  </div>
+  <script src="../js/order.js"></script>
 </body>
+
 </html>

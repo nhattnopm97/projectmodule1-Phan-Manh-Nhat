@@ -21,7 +21,8 @@ function Login() {
     console.log(listUser.find(d => d.password == psw));
     if (listUser.find(c => c.email == user) && listUser.find(c => c.password == psw)) {
         let nguoidung = {
-            user:user
+            user:user,
+            trangThai:"hoạt động"
         }
         window.localStorage.setItem("flagLogin",JSON.stringify(nguoidung))
         window.location.href = "../index.html";

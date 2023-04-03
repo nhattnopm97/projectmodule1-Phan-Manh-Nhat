@@ -80,7 +80,7 @@ function addCart(idSP) {
     let dsSP = JSON.parse(localStorage.getItem("dsSP"));
     let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
     let listSPCart = JSON.parse(localStorage.getItem("listSPCart"));
-    if(flagLogin==null){
+    if (flagLogin == null) {
         popUpCartDangNhap();
         return;
     }
@@ -183,7 +183,7 @@ kiemTraDangNhap();
 function dangxuat() {
     localStorage.removeItem("flagLogin");
     kiemTraDangNhap();
-    countPr();phẩm
+    countPr();
 }
 
 //khi ấn vào ảnh sản phẩm
@@ -195,11 +195,14 @@ function bamvaoanh(maSP) {
             result =
                 `
             <div class="elementIfo">
-                <img class="imgelm" onclick="bamvaoanh(${dsSP[i].ma, dsSP[i].user})" style="width:auto;" src="${dsSP[i].image}" alt="">
+                <img class="imgelm" style="width:auto;" src="${dsSP[i].image}" alt="">
                 <div class="bg-info text-white">${dsSP[i].ten}</div>
                 <div class="bg-primary text-white">${dsSP[i].gia}$</div>
                 <div class="bg-info text-white">${dsSP[i].moTa}</div>
-                <div><button class="btn btn-success" onclick=addCart("${dsSP[i].ma}")>Thêm vào giỏ hàng</button></div>
+                <div><button class="btn btn-success" onclick=addCart("${dsSP[i].ma}")>
+                    Thêm vào giỏ hàng
+                </button>
+                <button class="btn btn-success" onclick=review("${dsSP[i].ma}")>Xem review</button></div>
             </div>
             `;
         }
@@ -208,3 +211,40 @@ function bamvaoanh(maSP) {
     document.getElementById('id01').style.display = 'block';
 }
 
+{/* <div id="searchDiv">
+        <label for="a">Sản phẩm</label>
+        <input id="inputSearch" type="text" placeholder="Tìm kiếm theo tên"><br>
+        <label for="">Mức giá chấp nhận được</label>
+        <input id="inputPrice" type="number" placeholder="vd:500"><br>
+        <button class="btn btn-primary" onclick="searchName()">Tìm kiếm sản phẩm</button>
+    </div> */}
+
+function searchName() {
+    let dsSP = JSON.parse(localStorage.getItem("dsSP"));
+    let result = "";
+    let inputSearch = document.getElementById("inputSearch").value;
+    for (i = 0; i < dsSP.length; i++) {
+        if (dsSP[i].ten.toLowerCase().includes(inputSearch.toLowerCase())) {
+            result +=
+                `
+                <div class="element">
+                    <img class="imgelm" onclick=bamvaoanh("${dsSP[i].ma}") style="width:auto;" src="${dsSP[i].image}" alt="">
+                    <div class="infSP">
+                        <div class="bg-info text-white">${dsSP[i].ten}</div>
+                        <div class="bg-primary text-white">${dsSP[i].gia}$</div>
+                        <div><button class="btn btn-success" onclick=addCart("${dsSP[i].ma}")>Thêm vào giỏ hàng</button></div>
+                    </div>
+                </div>
+            `;
+        }
+    }
+    document.getElementById("sanPham").innerHTML = result;
+}
+
+function review(id) {
+    let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
+    console.log(id);
+    flagLogin.reviewid = id;
+    localStorage.setItem("flagLogin", JSON.stringify(flagLogin));
+    window.location.href = "./html/listreview.html";
+}

@@ -30,3 +30,8 @@
 .active {
     background-color: #04AA6D;
 }
+
+.ngaiTieuTruong:hover{
+    background-color: #efefef !important ;
+    color: rgb(113, 105, 105) !important;
+}

@@ -18,24 +18,26 @@
                     id="qttCart"></span></button>
         <button id="dangnhap" onclick="dangnhap()"><i class="fa fa-fw fa-envelope">Đăng nhập</i></button>
         <button id="dangky" onclick="dangky()"><i class="fa fa-fw fa-user"></i>Đăng ký</button>
-        <button id="nameUser"><i class="fa fa-fw fa-user"></i></button>
+        <button id="nameUser" class="ngaiTieuTruong"><i class="fa fa-fw fa-user"></i></button>
         <button id="dsSP" onclick="dsSP()"><i class="fa fa-fw fa-user"></i>Ngài có muốn xem ds sản phẩm</button>
         <button id="dangXuat" onclick="dangxuat()"><i class="fa fa-fw"></i>Đăng xuất</button>
     </div>
 
     <h2 id="userName">Đăng nhập để có thể mua hàng.</h2>
-    <button onclick="donhang()">Xem đơn hàng của bạn</button>
+    <button  class="btn btn-primary" onclick="donhang()">Xem đơn hàng của bạn</button>
     <div id="cart">
     </div>
 
     <div class="row divTongTien">
         <div id="totalMoney" class="col-md-4 tongTien"></div>
-        <div class="col-md-1"><button class="btnTaoDon btn btn-success" onclick="taodon()">Mua hết luôn</button></div>
+        <div class="col-md-1"><button id="themDon" class="btnTaoDon btn btn-success" onclick="taodon()">Mua hết luôn</button></div>
     </div>
 
-    <table id="id01" class="modal animate">
+    <div id="bangMuaLe" class="showSP"></div>
 
-    </table>
+    <table id="id01" class="modal animate"></table>
+
+
     <div id="snack-bar">
 
     </div>
