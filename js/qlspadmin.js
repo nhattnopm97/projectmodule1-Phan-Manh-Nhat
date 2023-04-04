@@ -14,7 +14,7 @@ function kiemTraDangNhap() {
     let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
     if (flagLogin != null) {
         if (flagLogin.user == "ad@gmail.com") {
-            document.getElementById("nameUser").innerHTML = `Xin chào Ngài Tiểu trưởng`;
+            document.getElementById("nameUser").innerHTML = `Xin chào admin`;
             document.getElementById("danhsachSP").style.display = "block"
         } else {
             document.getElementById("nameUser").innerHTML = `Xin chào ${flagLogin.user}`;
@@ -38,7 +38,7 @@ function dangxuat() {
     window.location.href = "../index.html"
 }
 
-function addimage(){
+function addimage() {
     // Lấy thẻ hình ảnh từ HTML
     const myImage = document.getElementById("image");
 
@@ -67,9 +67,22 @@ function addimage(){
 }
 addimage();
 
+function popUpnotadmin() {
+    document.getElementById("snack-bar").innerHTML = `Bạn đang truy cập trái phép!`;
+    var x = document.getElementById("snack-bar");
+    x.className = "show";
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
+
+
 //khi bấm vào nút lưu sản phẩm, lưu sản phẩm lên và sinh id cho sản phẩm
 let dsSP = JSON.parse(localStorage.getItem("dsSP"));
 function save() {
+    let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
+    if (flagLogin.user != "ad@gmail.com") {
+        popUpnotadmin();
+        return;
+    }
     addimage();
     let ten = document.getElementById("ten").value;
     let gia = document.getElementById("gia").value;
@@ -101,13 +114,12 @@ function themVaoBang() {
         `
     <tr>
         <td>STT</td>
-        <td>Hình ảnh</td>
         <td>Tên sản phẩm</td>
         <td>Giá</td>
         <td>Mã sản phẩm</td>
-        <td>Mô tả</td>
         <td>Edit</td>
         <td>Xóa</td>
+        <td>Xem chi tiết</td>
     </tr>
     `;
     for (i = 0; i < dsSP.length; i++) {
@@ -115,13 +127,12 @@ function themVaoBang() {
             `
         <tr>
             <td>${i + 1}</td>
-            <td><img src="${dsSP[i].image}" width="100px" height="100px"></td>
             <td>${dsSP[i].ten}</td>
             <td>${dsSP[i].gia}</td>
             <td>${dsSP[i].ma}</td>
-            <td>${dsSP[i].moTa}</td>
-            <td><button onclick="ed(${i})">Edit</button></td>
-            <td><button onclick="del(${i})">Xóa</button></td>
+            <td><button onclick="ed(${i})"  class="btn btn-info">Edit</button></td>
+            <td><button onclick="del(${i})"  class="btn btn-danger">Xóa</button></td>
+            <td><button>Xem chi tiết</button></td>
         </tr>
         `;
     }
@@ -132,6 +143,11 @@ function themVaoBang() {
 }
 themVaoBang();
 function del(id) {
+    let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
+    if (flagLogin.user != "ad@gmail.com") {
+        popUpnotadmin();
+        return;
+    }
     dsSP.splice(id, 1);
     localStorage.setItem("dsSP", JSON.stringify(dsSP));
     themVaoBang();
@@ -139,6 +155,11 @@ function del(id) {
 
 //khi bấm vào nút edit thì ẩn nút lưu sản phẩm, hiện nút update sản phẩm cũ.
 function ed(id) {
+    let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
+    if (flagLogin.user != "ad@gmail.com") {
+        popUpnotadmin();
+        return;
+    }
     document.getElementById("ten").value = dsSP[id].ten;
     document.getElementById("gia").value = dsSP[id].gia;
     document.getElementById("moTa").value = dsSP[id].moTa;
@@ -154,6 +175,11 @@ function ed(id) {
 
 //Tìm kiếm theo tên sản phẩm
 function timKiem() {
+    let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
+    if (flagLogin.user != "ad@gmail.com") {
+        popUpnotadmin();
+        return;
+    }
     let ndTK = document.getElementById("timKiem").value;
     let kqTK = "";
     for (j = 0; j < dsSP.length; j++) {
@@ -176,6 +202,11 @@ function timKiem() {
 
 //xóa dữ liệu cũ và cập nhật dữ liệu mới với mã là mã cũ vào danh sách sản phẩm lưu trên local, chuyển nút cập nhật thành nút lưu
 function updateSP() {
+    let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
+    if (flagLogin.user != "ad@gmail.com") {
+        popUpnotadmin();
+        return;
+    }
     flag = JSON.parse(localStorage.getItem("flag"));
     if (flag != null) {
         // Lấy thẻ hình ảnh từ HTML
@@ -230,31 +261,97 @@ function updateSP() {
 
 //render danh sách người dùng
 function uoa() {
+    let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
+    if (flagLogin.user != "ad@gmail.com") {
+        popUpnotadmin();
+        return;
+    }
     let listUser = JSON.parse(localStorage.getItem("listUser"));
-    console.log("1111", listUser);
     let kQ = `
     <tr>
         <td>stt</td>
         <td>tên người dùng</td>
         <td>sdt:</td>
-        <td><button>ban</button></td>
-        <td>Edit</td>
+        <td>Ban</td>
         <td>Xóa</td>
     </tr>`;
     for (i = 0; i < listUser.length; i++) {
         kQ +=
             `
         <tr>
-            <td>stt</td>
+            <td>${i + 1}  </td>
             <td>${listUser[i].email}</td>
             <td>${listUser[i].tel}</td>
-            <td><button onclick="banlUser(${i})">Ban</button></td>
-            <td><button onclick="edUser(${i}">edit</button></td>
-            <td><button onclocl="delUser${i}">xóa</button></td>
+            <td><button class="btn btn-danger" onclick="banlUser(${i})">Lock</button></td>
+            <td><button class="btn btn-danger" onclocl="delUser${i}">xóa</button></td>
+            <td><button class="btn btn-primary" onclick="unbanlUser(${i})">Unlock</button></td>
         </tr>
         `;
     }
     document.getElementById("listUserRender").innerHTML = kQ;
-
 }
+uoa();
+
+function delUser(id) {
+    let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
+    if (flagLogin.user != "ad@gmail.com") {
+        popUpnotadmin();
+        return;
+    }
+    let listUser = JSON.parse(localStorage.getItem("listUser"));
+    listUser.splice(id, 1);
+    localStorage.setItem("listUser", JSON.stringify(listUser));
+    uoa();
+}
+
+function banlUser(id) {
+    let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
+    if (flagLogin.user != "ad@gmail.com") {
+        popUpnotadmin();
+        return;
+    }
+    let listUser = JSON.parse(localStorage.getItem("listUser"));
+    console.log(id);
+    if (id == 0) {
+        popUpadmin();
+    } else {
+        listUser[id].statususer = "ban";
+        localStorage.setItem("listUser", JSON.stringify(listUser));
+        popUpban();
+    }
+}
+
+function unbanlUser(id) {
+    let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
+    if (flagLogin.user != "ad@gmail.com") {
+        popUpnotadmin();
+        return;
+    }
+    let listUser = JSON.parse(localStorage.getItem("listUser"));
+    listUser[id].statususer = "bình thường";
+    localStorage.setItem("listUser", JSON.stringify(listUser));
+    popUpunban();
+}
+
+function popUpban() {
+    document.getElementById("snack-bar").innerHTML = `Tài khoản đã bị khóa`;
+    var x = document.getElementById("snack-bar");
+    x.className = "show";
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
+
+function popUpunban() {
+    document.getElementById("snack-bar").innerHTML = `Mở khóa tài khoản thành công`;
+    var x = document.getElementById("snack-bar");
+    x.className = "show";
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
+
+function popUpadmin() {
+    document.getElementById("snack-bar").innerHTML = `Không thể khóa tài khoản admin`;
+    var x = document.getElementById("snack-bar");
+    x.className = "show";
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
+
 

@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh sách sản phẩm</title>
     <link rel="stylesheet" href="../css/qlspadmin.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <style>
-    
+
 </style>
 
 <body>
-    <div class="navbar">
+    <div class="nav-bar">
         <button onclick="home()"><i class="fa fa-fw fa-home"></i>Trang chủ</button>
         <button onclick="cart()"><i class="fa fa-fw fa-search">Giỏ hàng</button>
         <button id="dangnhap" onclick="dangnhap()"><i class="fa fa-fw fa-envelope">Đăng nhập</i></button>
@@ -44,7 +45,7 @@
     <br>
     <br>
 
-    <table id="table" border="1px" style="border-collapse:collapse" >
+    <table id="table" border="1px" style="border-collapse:collapse">
 
     </table>
     <h2>Tìm kiếm theo tên sản phẩm</h2>
@@ -54,17 +55,8 @@
     <br>
 
     <h2>Quản lý danh sách người dùng.</h2>
-    <label for="">Email</label>
-    <input  id="taiKhoan" type="text">
-    <label for="">Mật khẩu</label>
-    <input id="matKhau" type="text">
-    <label for="">Số điện thoại</label>
-    <input  id="soDT" type="text">
-    <button onclick="addUser()">Thêm</button>
-
-    <button onclick="uoa()">
-        Ú ÒA
-    </button>
+    
+    <br>
 
     <table id="listUserRender" border="1px">
         <!-- <tr>
@@ -76,6 +68,11 @@
             <td><button>xóa</button></td>
         </tr> -->
     </table>
+
+    <div id="snack-bar"></div>
+    <footer>
+
+    </footer>
     <script src="../js/qlspadmin.js">
 
     </script>

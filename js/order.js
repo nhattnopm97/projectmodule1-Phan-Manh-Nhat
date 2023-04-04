@@ -34,7 +34,7 @@ function kiemTraDangNhap() {
     console.log(flagLogin);
     if (flagLogin != null) {
         if (flagLogin.user == "ad@gmail.com") {
-            document.getElementById("nameUser").innerHTML = `Xin chào Ngài Tiểu trưởng`;
+            document.getElementById("nameUser").innerHTML = `Xin chào admin`;
             document.getElementById("dsSP").style.display = "block"
         } else {
             document.getElementById("nameUser").innerHTML = `Xin chào ${flagLogin.user}`;
@@ -59,16 +59,16 @@ function renderDonHang() {
     let listDonHang = JSON.parse(localStorage.getItem("listDonHang"));
     let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
     let result = "";
-    let resultTenVaSL = "";
     if (flagLogin.user == "ad@gmail.com") {
         for (i = 0; i < listDonHang.length; i++) {
             let total = 0;
+            let resultTenVaSL = "";
             for (j = 0; j < listDonHang[i].gia.length; j++) {
                 total += listDonHang[i].sl[j] * listDonHang[i].gia[j];
                 resultTenVaSL += `${listDonHang[i].ten[j]}: ${listDonHang[i].sl[j]} cái; ${listDonHang[i].sl[j] * listDonHang[i].gia[j]}$ ___<br>`;
             }
             result +=
-                `
+            `
             <tr>
                 <td>${i + 1}</td>
                 <td>${listDonHang[i].hoVaTen} (${listDonHang[i].user})</td>
@@ -77,10 +77,10 @@ function renderDonHang() {
                 <td>${resultTenVaSL}</td>
                 <td>${total}$</td>
                 <td><select>
-                <option>Chờ xác nhận</option>
-                <option>Đã xác nhận</option>
-                <option>Đang giao hàng</option>
-                <option>Xóa đơn(xóa sau x ngày)</option>
+                    <option>Chờ xác nhận</option>
+                    <option>Đã xác nhận</option>
+                    <option>Đang giao hàng</option>
+                    <option>Xóa đơn(xóa sau x ngày)</option>
                 </select></td>
                 <td><button class="btn btn-danger" onclick="xoaDonHang(${i})">Xóa đơn hàng</button></td>
             </tr>
@@ -90,6 +90,7 @@ function renderDonHang() {
     } else {
         for (k = 0; k < listDonHang.length; k++) {
             let total = 0;
+            let resultTenVaSL = "";
             if (flagLogin.user == listDonHang[k].user) {
                 for (l = 0; l < listDonHang[k].gia.length; l++) {
                     total += listDonHang[k].sl[l] * listDonHang[k].gia[l];

@@ -159,7 +159,7 @@ function kiemTraDangNhap() {
     if (flagLogin != null) {
         // đã đăng nhập
         if (flagLogin.user == "ad@gmail.com") {
-            document.getElementById("nameUser").innerHTML = `Xin chào Ngài Tiểu trưởng`;
+            document.getElementById("nameUser").innerHTML = `Xin chào admin`;
             document.getElementById("dsSP").style.display = "block"
         } else {
             document.getElementById("nameUser").innerHTML = `Xin chào ${flagLogin.user}`;

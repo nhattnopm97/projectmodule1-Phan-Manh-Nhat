@@ -16,20 +16,25 @@ function renderListReview() {
             </div>
             <div>${flagLogin.user}</div><span></span>
             <input id="inputReview" type="text" placeholder="Thêm đánh giá">
-            <button onclick="themreview(${dsSP[i].ma})">Đánh giá</button>
+            <button onclick=themreview("${dsSP[i].ma}")>Đánh giá</button>
             <div id="listDanhGia"></div>
             `;
         }
     }
-    console.log("1111", flagLogin.reviewid);
     document.getElementById("trangchinh").innerHTML = result;
 }
 renderListReview();
 
 function themreview(idsp) {
-    let listReview = [];
-    let result = "";
-    let review= document.getElementById("inputReview").value;
+    // let listReview = [];
+    // let result = "";
+    // let review= document.getElementById("inputReview").value;
+    let dsSP = JSON.parse(localStorage.getItem("dsSP"));
+    for(i=0;i<dsSP.length;i++){
+        if(dsSP[i].ma==idsp){
+            console.log("111111111",dsSP[i].istReview);
+        }
+    }
 }
 
 function renderReview(){

@@ -65,7 +65,7 @@ function renderCart() {
         }
     }
 
-    if(coPrInUser = 0){
+    if(coPrInUser == 0){
         document.getElementById("themDon").disabled =true;
     }else{
         document.getElementById("themDon").disabled =false;
@@ -148,7 +148,7 @@ function kiemTraDangNhap() {
     let flagLogin = JSON.parse(localStorage.getItem("flagLogin"));
     if (flagLogin != null) {
         if (flagLogin.user == "ad@gmail.com") {
-            document.getElementById("nameUser").innerHTML = `Xin chào Ngài Tiểu trưởng`;
+            document.getElementById("nameUser").innerHTML = `Xin chào admin`;
             document.getElementById("dsSP").style.display = "block"
         } else {
             document.getElementById("nameUser").innerHTML = `Xin chào ${flagLogin.user}`;

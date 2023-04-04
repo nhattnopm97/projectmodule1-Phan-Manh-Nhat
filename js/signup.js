@@ -19,7 +19,7 @@ function signup() {
     let taolaadmin = {
         email: "ad@gmail.com",
         password: 1,
-        tel: +84922928430
+        tel: +84922928430.
     }
     if (listUser == null) {
         listUser = [];
@@ -32,32 +32,62 @@ function signup() {
     let tel = document.getElementById("tel").value;
     console.log(isNaN(tel));
     if (user.indexOf("@") < 1 || user.lastIndexOf(".") < user.indexOf("@") + 2) {
-        alert("email chưa đúng định dạng");
+        popUpemailfailed();
         return;
     }
 
+    //tk đã có người đăng ký
     if(listUser.find(c=>c.email==user)){
-        alert("email đã có người đăng ký");
+        popUpconguoidk();
         return;
     }
 
     if (psw.length < 6 || pswr < 6) {
-        alert("mật khẩu phải dài hơn 6 ký tự");
+        popUppswlength();
         return;
     }
 
     if (psw !== pswr) {
-        alert("Nhập lại mật khẩu chưa đúng");
+        popUppswfailed();
         return;
     }
 
     let nguoiDung = {
         email: user,
         password: psw,
-        tel: tel
+        tel: tel,
+        statususer:"bình thường"
     }
 
     listUser.push(nguoiDung);
     localStorage.setItem("listUser", JSON.stringify(listUser));
     window.location.href = "login.html";
+}
+
+function popUpconguoidk() {
+    document.getElementById("snack-bar").innerHTML = `Tài khoản đã có người đăng ký`;
+    var x = document.getElementById("snack-bar");
+    x.className = "show";
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
+
+function popUppswlength() {
+    document.getElementById("snack-bar").innerHTML = `Mật khẩu phải dài trên 6 ký tự`;
+    var x = document.getElementById("snack-bar");
+    x.className = "show";
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
+
+function popUpemailfailed() {
+    document.getElementById("snack-bar").innerHTML = `Email chưa đúng`;
+    var x = document.getElementById("snack-bar");
+    x.className = "show";
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+}
+
+function popUppswfailed() {
+    document.getElementById("snack-bar").innerHTML = `Nhập lại mật khẩu chưa đúng`;
+    var x = document.getElementById("snack-bar");
+    x.className = "show";
+    setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
 }
